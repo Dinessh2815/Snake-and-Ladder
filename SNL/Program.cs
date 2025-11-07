@@ -13,19 +13,19 @@
             }
 
 
-            Dictionary<int, int> ladders = new Dictionary<int, int>
+            int[,] ladders = new int[,]
             {
-                { 4, 14 },   
-                { 9, 31 },   
-                { 20, 38 },  
-                { 28, 84 },  
-                { 40, 59 },  
-                { 51, 67 },  
-                { 63, 81 },  
-                { 71, 91 }   
+                { 4, 14 },
+                { 9, 31 },
+                { 20, 38 },
+                { 28, 84 },
+                { 40, 59 },
+                { 51, 67 },
+                { 63, 81 },
+                { 71, 91 }
             };
 
-            Dictionary<int, int> snakes = new Dictionary<int, int>
+            int[,] snakes = new int[,]
             {
                 { 17, 7 },
                 { 54, 34 },
@@ -38,19 +38,7 @@
             };
 
 
-            foreach (var ladder in ladders)
-            {
-                board[ladder.Key] = ladder.Value;
-            }
-            foreach (var snake in snakes)
-            {
-                board[snake.Key] = snake.Value;
-            }
-            int position = 0;
-            
-            Random random = new Random();
-            int die = random.Next(1, 7);
-            Console.WriteLine("Die rolled: " + die);
+          
             
 
         }
