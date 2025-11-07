@@ -4,10 +4,10 @@
     {
         static void Main(string[] args)
         {
-            
+
             int[] board = new int[101];
-            
-            for(int i = 1; i <= 100; i++)
+
+            for (int i = 1; i <= 100; i++)
             {
                 board[i] = i;
             }
@@ -40,7 +40,14 @@
 
             int position = 0;
 
-            
+            while (position <= 100)
+            {
+                Random random = new Random();
+                int die = random.Next(1, 7);
+                Console.WriteLine("Die rolled: " + die);
+
+            }
+
 
         }
     }
