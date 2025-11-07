@@ -47,6 +47,11 @@
                 board[snake.Key] = snake.Value;
             }
             int position = 0;
+            
+            Random random = new Random();
+            int die = random.Next(1, 7);
+            Console.WriteLine("Die rolled: " + die);
+            
 
         }
     }
