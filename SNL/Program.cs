@@ -1,4 +1,6 @@
-﻿namespace SNL
+﻿using System;
+
+namespace SNL
 {
     internal class Program
     {
@@ -37,50 +39,61 @@
             };
 
 
-            int position = 0;
+            int[] playerPosition = new int[] {0, 0};
             int diceCount = 0;
+            int currentPlayer = 0;
             Random random = new Random();
-            while (position <= 100)
+            while (playerPosition[0] != 100 && playerPosition[1] != 100 )
             {
+                bool gotLadder = false;
+                Console.WriteLine("\n===========================");
+                Console.WriteLine($"\nits player {currentPlayer + 1}'s turn");
                 int die = random.Next(1, 7);
-                Console.WriteLine("\n Die rolled: " + die);
+                Console.WriteLine("\nDie rolled: " + die);
 
-                position += die;
+                playerPosition[currentPlayer] += die;
 
-                if(position > 100)
+                if (playerPosition[currentPlayer] > 100)
                 {
-                    position -= die;
-                    Console.WriteLine($"Position is greater than 100 so moving back to the position: {position}");
+                    playerPosition[currentPlayer] -= die;
+                    Console.WriteLine($"Position is greater than 100 so moving back to the position: {playerPosition[currentPlayer]}");
                     continue;
                 }
-                else if(position == 100)
+                else if(playerPosition[currentPlayer] == 100)
                 {
-                    Console.WriteLine($"Congratulations you have successfully reached the position {position} and won the game!!");
+                    Console.WriteLine($"Congratulations player {currentPlayer} have successfully reached the position {playerPosition[currentPlayer]} first and won the game!!");
                     break;
                 }
 
                 for (int i = 0; i < ladders.GetLength(0); i++)
                 {
-                    if (position == ladders[i, 0])
+                    if (playerPosition[currentPlayer] == ladders[i, 0])
                     {
-                        position = ladders[i, 1];
-                        Console.WriteLine($"Player found a Ladder!!! moving up to the positon: {position}");
+                        playerPosition[currentPlayer] = ladders[i, 1];
+                        Console.WriteLine($"Player found a Ladder!!! moving up to the positon: {playerPosition[currentPlayer]}");
+                        gotLadder = true;
                     }
                 }
                 for (int i = 0; i < snakes.GetLength(0); i++)
                 {
-                    if (position == snakes[i,0])
+                    if (playerPosition[currentPlayer] == snakes[i,0])
                     {
-                        position = snakes[i, 1];
-                        Console.WriteLine($"Player got caught with a snake :( going back to the positon: {position}");
+                        playerPosition[currentPlayer] = snakes[i, 1];
+                        Console.WriteLine($"Player got caught with a snake :( going back to the positon: {playerPosition[currentPlayer]}");
                     }
                     
                 }
                 diceCount++;
-                Console.WriteLine($"Player moved to the positon: {position}");
-                
-
-            }
+                Console.WriteLine($"Player moved to the positon: {playerPosition[currentPlayer]}");
+                if (!gotLadder)
+                {
+                    currentPlayer = (currentPlayer == 0) ? 1 : 0;
+                }
+                else
+                {
+                    continue;
+                }
+            }   
             Console.WriteLine($"the dice has been played {diceCount} time");
         }
     }
