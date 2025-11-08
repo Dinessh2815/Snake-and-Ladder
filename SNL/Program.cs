@@ -45,10 +45,25 @@
                 Console.WriteLine("\n Die rolled: " + die);
 
                 position += die;
-                for (int i = 0; i < ladders.GetLength(0); i++) {
-                    if (position == ladders[i,0])
+
+                if(position > 100)
+                {
+                    position -= die;
+                    Console.WriteLine($"Position is greater than 100 so moving back to the position: {position}");
+                    continue;
+                }
+                else if(position == 100)
+                {
+                    Console.WriteLine($"Congratulations you have successfully reached the position {position} and won the game!!");
+                    break;
+                }
+
+                for (int i = 0; i < ladders.GetLength(0); i++)
+                {
+                    if (position == ladders[i, 0])
                     {
-                        position = ladders[i,1];                      
+                        position = ladders[i, 1];
+                        Console.WriteLine($"Player found a Ladder!!! moving up to the positon: {position}");
                     }
                 }
                 for (int i = 0; i < snakes.GetLength(0); i++)
@@ -56,12 +71,13 @@
                     if (position == snakes[i,0])
                     {
                         position = snakes[i, 1];
+                        Console.WriteLine($"Player got caught with a snake :( going back to the positon: {position}");
                     }
+                    
                 }
                 Console.WriteLine($"Player moved to the positon: {position}");
-            }
 
-            Console.WriteLine("\nPlayer reached 100 and won the game!");
+            }
         }
     }
 }
