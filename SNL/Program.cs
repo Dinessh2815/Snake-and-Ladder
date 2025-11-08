@@ -38,6 +38,7 @@
 
 
             int position = 0;
+            int diceCount = 0;
             Random random = new Random();
             while (position <= 100)
             {
@@ -75,9 +76,12 @@
                     }
                     
                 }
+                diceCount++;
                 Console.WriteLine($"Player moved to the positon: {position}");
+                
 
             }
+            Console.WriteLine($"the dice has been played {diceCount} time");
         }
     }
 }
