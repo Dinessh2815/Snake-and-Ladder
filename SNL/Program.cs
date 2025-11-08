@@ -44,6 +44,10 @@
                 int die = random.Next(1, 7);
                 Console.WriteLine("\n Die rolled: " + die);
 
+                position += die;
+
+                Console.WriteLine($"moved to the positon: {position}");
+
                 
             }
 
