@@ -12,7 +12,7 @@
                 board[i] = i;
             }
 
-            int[,] ladders = new int[,]
+            int[,] ladders = new int[,] 
             {
                 { 4, 14 },
                 { 9, 31 },
@@ -38,15 +38,16 @@
 
 
             int position = 0;
-
+            Random random = new Random();
             while (position <= 100)
             {
-                Random random = new Random();
                 int die = random.Next(1, 7);
-                Console.WriteLine("Die rolled: " + die);
+                Console.WriteLine("\n Die rolled: " + die);
 
+                
             }
 
+            Console.WriteLine("\nPlayer reached 100 and won the game!");
         }
     }
 }
