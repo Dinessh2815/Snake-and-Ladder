@@ -45,10 +45,20 @@
                 Console.WriteLine("\n Die rolled: " + die);
 
                 position += die;
-
-                Console.WriteLine($"moved to the positon: {position}");
-
-                
+                for (int i = 0; i < ladders.GetLength(0); i++) {
+                    if (position == ladders[i,0])
+                    {
+                        position = ladders[i,1];                      
+                    }
+                }
+                for (int i = 0; i < snakes.GetLength(0); i++)
+                {
+                    if (position == snakes[i,0])
+                    {
+                        position = snakes[i, 1];
+                    }
+                }
+                Console.WriteLine($"Player moved to the positon: {position}");
             }
 
             Console.WriteLine("\nPlayer reached 100 and won the game!");
